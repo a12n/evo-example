@@ -7,6 +7,10 @@ val char : unit -> char
 (** Choose a single [a] according to the distribution. *)
 val choice : (float * 'a) array -> 'a
 
+(** Choose a single [a] according to the distribution. Return array
+    index. *)
+val choicei : (float * 'a) array -> int
+
 (** Integer from [min] (0 by default) to [max] inclusive with uniform
     distribution. *)
 val int : ?min:int -> max:int -> unit -> int
