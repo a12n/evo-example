@@ -17,7 +17,9 @@ let choicei distr =
          ( p := !p -. p_i;
            false )) distr
 
-let choice distr = snd distr.(choicei distr)
+let choice distr =
+  let i = choicei distr in
+  snd distr.(i)
 
 let choice2i distr =
   let rec choose_distinct i =
