@@ -10,7 +10,7 @@ let crossover a b =
   String.init max_len (fun i -> if i > k then a.[i] else b.[i])
 
 let fitness ~ideal genes =
-  (-1) * String.edit_distance ideal genes
+  (-1) * String.edit_distance ideal genes |> Float.of_int
 
 let mutated ?(p=0.05) genes =
   String.(init (length genes)
