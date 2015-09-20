@@ -25,7 +25,7 @@ let choice2i distr =
   let rec choose_distinct i =
     match choicei distr with
       j when j != i -> i, j
-    | j -> choose_distinct i in
+    | _j -> choose_distinct i in
   choose_distinct (choicei distr)
 
 let choice2 distr =
