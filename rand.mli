@@ -4,7 +4,14 @@ val bool : ?p:float -> unit -> bool
 (** ASCII character with uniform distribution. *)
 val char : unit -> char
 
-(** Choose a single [a] according to the distribution. *)
+(** Like [choice2i], but returns elements themselves. *)
+val choice2 : (float * 'a) array -> 'a * 'a
+
+(** Choose pair of distinct elements, based on distribution. Return
+    array indices. *)
+val choice2i : (float * 'a) array -> int * int
+
+(** Like [choicei], but returns element itself, instead of index. *)
 val choice : (float * 'a) array -> 'a
 
 (** Choose a single [a] according to the distribution. Return array

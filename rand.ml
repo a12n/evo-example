@@ -19,6 +19,17 @@ let choicei distr =
 
 let choice distr = snd distr.(choicei distr)
 
+let choice2i distr =
+  let rec choose_distinct i =
+    match choicei distr with
+      j when j != i -> i, j
+    | j -> choose_distinct i in
+  choose_distinct (choicei distr)
+
+let choice2 distr =
+  let i, j = choice2i distr in
+  snd distr.(i), snd distr.(j)
+
 let bool ?(p=0.5) () = xi () < p
 
 let seed = Random.self_init
