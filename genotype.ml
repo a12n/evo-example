@@ -2,9 +2,12 @@ open Batteries
 
 type t = string
 
-let crossover a _b =
-  (* TODO *)
-  a
+let crossover a b =
+  let len_a, len_b = String.(length a, length b) in
+  let min_len = min len_a len_b in
+  let max_len = max len_a len_b in
+  let k = Rand.int ~max:(min_len - 1) () in
+  String.init max_len (fun i -> if i > k then a.[i] else b.[i])
 
 let fitness ~ideal genes =
   (-1) * String.edit_distance ideal genes
