@@ -12,7 +12,7 @@ let crossover a b =
 let fitness ~ideal genes =
   (-1) * String.edit_distance ideal genes |> Float.of_int
 
-let mutated ?(p=0.05) genes =
+let mutated ?(p=0.02) genes =
   String.(init (length genes)
             (fun i ->
                if Rand.bool ~p () then
