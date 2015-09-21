@@ -29,9 +29,19 @@ let rec run target population generation =
          Genotype.(mutated ~p:0.01 (crossover a b))) in
   run target next_population next_generation
 
+let parse_args () =
+  let target = ref "Homo sapiens sapiens, the apex of creation" in
+  let size = ref 1000 in
+  Arg.parse [ "-target", Arg.Set_string target,
+              Printf.sprintf "The ultimate genotype (default \"%s\")" !target;
+              "-size", Arg.Set_int size,
+              Printf.sprintf "Population size (default %d)" !size ]
+    (fun _anon -> ())
+    "Evolution of a string of text";
+  !target, !size
+
 let _ =
-  let size = 1000 in
-  let target = "Homo sapiens sapiens, the apex of creation" in
+  let target, size = parse_args () in
   Rand.seed ();
   let genes_len = String.length target in
   let pop = Population.random ~genes_len size in
