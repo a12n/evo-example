@@ -19,7 +19,7 @@ let rec run target population generation =
   Array.sort (fun a b -> (-1) * (compare a b)) mating_pool;
   Array.iter (fun (p, genes) ->
     Printf.printf "%-70s %g\n" (diff target genes) p)
-    (Array.sub mating_pool 0 39);
+    (try Array.sub mating_pool 0 39 with Invalid_argument _ -> mating_pool);
   wait_key ();
   let size = Array.length population in
   let next_generation = generation + 1 in
