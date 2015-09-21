@@ -14,7 +14,7 @@ let rec run target population generation =
   let next_population = Array.init size
       (fun _i ->
          let a, b = Rand.choice2 mating_pool in
-         Genotype.(mutated (crossover a b))) in
+         Genotype.(mutated ~p:0.01 (crossover a b))) in
   run target next_population next_generation
 
 let _ =
