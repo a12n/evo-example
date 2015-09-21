@@ -18,7 +18,7 @@ let rec run target population generation =
   run target next_population next_generation
 
 let _ =
-  let size = 32 in
+  let size = 1000 in
   let target = "Homo sapiens sapiens, the apex of creation" in
   Rand.seed ();
   let genes_len = String.length target in
