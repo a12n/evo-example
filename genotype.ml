@@ -3,11 +3,9 @@ open Batteries
 type t = string
 
 let crossover a b =
-  let len_a, len_b = String.(length a, length b) in
-  let min_len = min len_a len_b in
-  let max_len = max len_a len_b in
-  let k = Rand.int ~max:(min_len - 1) () in
-  String.init max_len (fun i -> if i > k then a.[i] else b.[i])
+  let n = String.length a in
+  assert (String.length b == n);
+  String.init n (fun i -> if Rand.bool () then a.[i] else b.[i])
 
 let fitness ~target genes =
   let len = min (String.length target) (String.length genes) in
