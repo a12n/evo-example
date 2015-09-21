@@ -5,8 +5,9 @@ let wait_key () = ignore (read_line ())
 let rec run target population generation =
   Printf.printf "%-70s %05d\n\n" target generation;
   let mating_pool = Population.repro_prob ~target population in
+  Array.sort (fun a b -> (-1) * (compare a b)) mating_pool;
   Array.iter (fun (p, genes) ->
-      Printf.printf "%-70s %g\n" genes p) mating_pool;
+      Printf.printf "%-70s %g\n" genes p) (Array.sub mating_pool 0 39);
   wait_key ();
   let size = Array.length population in
   let next_generation = generation + 1 in
