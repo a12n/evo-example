@@ -6,4 +6,4 @@ val random : int -> genes_len:int -> t
 
 (** Reproduction probability for each of the specimen, based on the
     fitness. *)
-val repro_prob : ideal:Genotype.t -> t -> (float * Genotype.t) array
+val repro_prob : target:Genotype.t -> t -> (float * Genotype.t) array

@@ -9,8 +9,8 @@ let crossover a b =
   let k = Rand.int ~max:(min_len - 1) () in
   String.init max_len (fun i -> if i > k then a.[i] else b.[i])
 
-let fitness ~ideal genes =
-  (-1) * String.edit_distance ideal genes |> Float.of_int
+let fitness ~target genes =
+  (-1) * String.edit_distance target genes |> Float.of_int
 
 let mutated ?(p=0.02) genes =
   String.(init (length genes)
