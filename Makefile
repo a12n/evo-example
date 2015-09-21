@@ -7,7 +7,7 @@ OCAMLBUILD_FLAGS += -use-ocamlfind
 all: lib
 
 app:
-	ocamlbuild $(OCAMLBUILD_FLAGS) main.byte
+	ocamlbuild $(OCAMLBUILD_FLAGS) main.native
 
 clean:
 	ocamlbuild $(OCAMLBUILD_FLAGS) -clean
