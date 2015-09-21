@@ -10,7 +10,10 @@ let crossover a b =
   String.init max_len (fun i -> if i > k then a.[i] else b.[i])
 
 let fitness ~target genes =
-  (-1) * String.edit_distance target genes |> Float.of_int
+  let len = min (String.length target) (String.length genes) in
+  let score = Enum.init len (fun i -> target.[i] == genes.[i])
+              |> Enum.map Bool.to_int |> Enum.sum in
+  Float.of_int (score * score)
 
 let mutated ?(p=0.02) genes =
   String.(init (length genes)
